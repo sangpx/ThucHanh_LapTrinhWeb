@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bài 7</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            #table{
+                border: 1px black solid;
+                margin: 0 auto;
+                margin-top: 70px;
+                padding: 20px;
+            }
+        </style>
+        <script type="text/javascript">
+            let a=new Array();
+            a[0]="Intel";
+            a[1]="AMD";
+            function Them(){
+                document.getElementById("nhapHang").style.display="block";
+                document.getElementById("luu").style.display="inline-block";
+                document.getElementById("them").style.display="none";
+            }
+            function Huy(){
+                document.getElementById("nhapHang").style.display="none";
+                document.getElementById("luu").style.display="none";
+                document.getElementById("them").style.display="inline-block";
+            }
+            function Luu(){
+                hang=document.getElementById("txtHang");
+                if(hang.value.trim()=='')
+                {
+                    alert("Bạn chưa nhập dữ liệu");
+                }
+                else
+                {
+                    var opt=document.createElement("OPTION");
+                        textnode=document.createTextNode(hang.value.trim());
+                        select=document.getElementById("dsHangsx");
+                    opt.setAttribute("value", hang.value.trim());
+                    opt.appendChild(textnode);
+                    select.appendChild(opt);
+                    Huy();
+                }
+            }
+            function Load(){
+                for(i=0; i<a.length; i++)
+                {
+                    var opt=document.createElement("OPTION");
+                        textnode=document.createTextNode(a[i]);
+                        select=document.getElementById("dsHangsx");
+                    opt.setAttribute("value", a[i]);
+                    opt.appendChild(textnode);
+                    select.appendChild(opt);
+                }
+            }
+        </script>
+    </head>
+
+    
+    <body onload="Load()">
+        <form>
+            <table id="table">
+                <tr>
+                    <td>Danh sách Hãng sản xuất CPU</td>
+                    <td>
+                        <select id="dsHangsx"></select>
+                    </td>
+                </tr>
+                <tr id="nhapHang" style="display:none">
+                    <td>Hãng</td>
+                    <td><input id="txtHang" type="text"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td width="60%">
+                        <button id="them" name="btnthem" type="button" onclick="Them()">Thêm</button>
+                        <button id="luu" name="btnluu" type="button" onclick="Luu()" style="display: none;">Lưu</button>
+                        <button id="huy" name="btnhuy" type="button" onclick="Huy()">Hủy</button>
+                    </td>
+                </tr>
+            </table> 
+        </form>
+    </body>
+</html>

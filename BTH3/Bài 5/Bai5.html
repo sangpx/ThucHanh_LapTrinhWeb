@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bài 5</title>
+        <meta charset="UTF-8"> 
+        <link rel="stylesheet" href="Bai5.css">
+        <script type="text/javascript">
+           document.getElementById("thuchien").addEventListener("click", function(){
+         let val = document.getElementById("txtChuoi").value;
+        let arr = val.split(", ");
+        console.log(arr);
+
+        function add(s){
+        let cre = document.createElement("option");
+        cre.innerText = s;
+        document.getElementById("ddlDanhsach").appendChild(cre);
+        }
+
+        for(let i =0; i<arr.length; i++){
+        add(arr[i]);
+        }
+
+        if(val == ""){
+        alert("Bạn chưa nhập giá trị!");
+        }
+    })
+        function luachon(){
+            alert("Bạn đang chọn mục: "+document.getElementById("select").value);
+        }
+
+        function getfocus(){
+             document.getElementById("nhap").focus();
+            document.getElementById("nhap").value="";
+        }
+        </script>
+    </head>
+    <body>
+        <form>
+            <p id="chuoi">Chuỗi</p>
+            <input id="nhap" type="text">
+            <p id="ds">Danh sách</p>
+            <select id="select" onchange="luachon();">
+            </select>
+            <div></div>
+            <input id="huy" type="button" onclick="getfocus();" value="Hủy">
+            <input id="thuchien" type="button" onclick="thucthi();" value="Thực hiện">
+        </form>
+    </body>
+</html>

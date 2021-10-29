@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bài 6</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="Bai6.css">
+        <script type="text/javascript">
+            function kiemtra(){
+                var cung,
+                    ngay=new Date(document.getElementById("nhap").value).getDate(),
+                    thang= new Date(document.getElementById("nhap").value).getMonth();//hàm getMonth() sẽ chỉ trả về giá trị từ 0 đến 11 nên cài đặt case từ 0 đến 11
+                switch (thang){
+                    case 0: if (ngay>=1&&ngay<=19) cung="Ma Kết"; else cung="Bảo Bình";break;
+                    case 1: if (ngay>=1&&ngay<=18) cung="Bảo Bình"; else cung="Song Ngư";break;
+                    case 2: if (ngay>=1&&ngay<=20) cung="Song Ngư"; else cung="Bạch Dương";break;
+                    case 3: if (ngay>=1&&ngay<=20) cung="Bạch Dương"; else cung="Kim Ngưu";break;
+                    case 4: if (ngay>=1&&ngay<=20) cung="Kim Ngưu"; else cung="Song Tử";break;
+                    case 5: if (ngay>=1&&ngay<=21) cung="Song Tử"; else cung="Cự Giải";break;
+                    case 6: if (ngay>=1&&ngay<=22) cung="Cự Giải"; else cung="Sư Tử";break;
+                    case 7: if (ngay>=1&&ngay<=22) cung="Sư Tử"; else cung="Xử Nữ";break;
+                    case 8: if (ngay>=1&&ngay<=22) cung="Xử Nữ"; else cung="Thiên Bình";break;
+                    case 9: if (ngay>=1&&ngay<=23) cung="Thiên Bình"; else cung="Bọ Cạp";break;
+                    case 10: if (ngay>=1&&ngay<=22) cung="Bọ Cạp"; else cung="Nhân Mã";break;
+                    case 11: if (ngay>=1&&ngay<=21) cung="Nhân Mã"; else cung="Ma Kết";break;
+                }
+                document.getElementById("select").value=cung;//.value vì select đc truyền vào dưới dạng input
+            }
+
+            function huy(){
+                document.getElementById("nhap").value="";
+                document.getElementById("select").value="";
+            }
+        </script>
+    </head>
+    <body>
+        <form>
+            <p id="ngaysinh">Ngày sinh</p>
+            <input id="nhap" type="date">
+            <p id="cung">Cung</p>
+            <input id="select" type="text">
+            <div></div>
+            <input id="xoa" type="button" value="Xóa" onclick="huy()">
+            <input id="xem" type="button" value="Xem" onclick="kiemtra()">
+        </form>
+    </body>
+</html>

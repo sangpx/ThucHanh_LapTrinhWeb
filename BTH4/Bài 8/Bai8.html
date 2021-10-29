@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bài 8</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="bai8.css">
+        <script>
+            var table=new Array();
+            table[0]=new Array("Core i3 7100", "Intel", "20/11/2011", "3450000");
+            table[1]=new Array("Core i5 4430", "Intel", "21/08/2012", "4530000");
+            function khoitao(){
+                for(i=0;i<table.length;i++)
+                {
+                    var a="<tr><td>"+(i+1)+"</td><td>"+table[i][0]+"</td><td>"+table[i][1]+"</td><td>"+table[i][2]+"</td><td>"+table[i][3]+"</td></tr>"; 
+                    document.getElementById("table1").insertAdjacentHTML("beforeend", a);
+                }
+            }
+            function check(){
+                var kt=true;
+                var ngayht=new Date();
+                var ngay=new Date(document.getElementById("ngayramat").value);
+                if(ngay>ngayht)
+                {
+                    alert("Bạn không thể nhập ngày lớn hơn ngày hiện tại");
+                    document.getElementById("ngayramat").focus();
+                    kt=false;
+                }
+                if (Number(document.getElementById("gia").value.trim())!=NaN)
+                {
+                    alert("sai kiểu giá");
+                    document.getElementById("gia").value.focus();
+                    kt=false;
+                }
+                return kt;
+            }
+            function Them(){
+                tenVXL=document.getElementById("tenVXL");
+                hang=document.getElementById("hang");
+                ngayramat=document.getElementById("ngayramat");
+                gia=document.getElementById("gia");
+                if (check())
+                {
+                    table[table.length]=new Array(tenVXL.value.trim(),hang.value.trim(),ngayramat.value.trim(),gia.value.trim());
+                    var a="<tr><td>"+(i+1)+"</td><td>"+table[  i][0]+"</td><td>"+table[i][1]+"</td><td>"+table[i][2]+"</td><td>"+table[i][3]+"</td></tr>"; 
+                    document.getElementById("table1").insertAdjacentHTML("beforeend", a);
+                }
+            }
+            function Huy(){
+                tenVXL=document.getElementById("tenVXL").value="";
+                hang=document.getElementById("hang").value="";
+                ngayramat=document.getElementById("ngayramat").value="";
+                gia=document.getElementById("gia").value="";
+            }
+        </script>
+    </head>
+    <body onload="khoitao()">
+        <table id="table1"  border="1px">
+                <tr>
+                    <td>STT</td>
+                    <td>Tên VXL</td>
+                    <td>Hãng sx</td>
+                    <td>Ngày ra mắt</td>
+                    <td>Giá(vnđ)</td>
+                </tr>
+
+        </table>
+        <table id="table2">
+            <tr>
+                <td>Tên VXL</td>
+                <td>
+                    <input id="tenVXL" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Hãng</td>
+                <td>
+                    <input id="hang" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Ngày ra mắt</td>
+                <td>
+                    <input id="ngayramat" type="date">
+                </td>
+            </tr>
+            <tr>
+                <td>Giá</td>
+                <td>
+                    <input id="gia" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button id="them" type="button" onclick="Them()">Thêm</button>
+                    <button id="huy" type="button" onclick="Huy()">Hủy</button>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
